@@ -1,0 +1,31 @@
+/*create tables and Fks*/
+
+CREATE TABLE `db`.`accounts`  (
+    `account_id` int NOT NULL AUTO_INCREMENT,
+    `account_number` int(10) NULL,
+    `password` int(4) NULL,
+    `token` varchar(255) NULL,
+    `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`account_id`),
+    UNIQUE INDEX `idx_account_token`(`token`) USING BTREE
+);
+
+
+CREATE TABLE `db`.`account_balance`  (
+  `account_balance_id` int NOT NULL AUTO_INCREMENT,
+  `account_id` int NULL,
+  `balance` float(255, 2) NULL,
+  `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`account_balance_id`),
+  INDEX `idx_account_balance_balance`(`balance`) USING BTREE,
+  CONSTRAINT `fk_balance_account_id` FOREIGN KEY (`account_id`) REFERENCES `db`.`accounts` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+
+/*create triggers*/
+
+CREATE TRIGGER `trigger_create_line_account_balance` AFTER INSERT ON `accounts` FOR EACH ROW INSERT INTO db.account_balance (account_id, balance) VALUES (new.account_id, 0);
