@@ -11,7 +11,6 @@ CREATE TABLE `db`.`accounts`  (
     UNIQUE INDEX `idx_account_token`(`token`) USING BTREE
 );
 
-
 CREATE TABLE `db`.`account_balance`  (
   `account_balance_id` int NOT NULL AUTO_INCREMENT,
   `account_id` int NULL,
@@ -23,7 +22,21 @@ CREATE TABLE `db`.`account_balance`  (
   CONSTRAINT `fk_balance_account_id` FOREIGN KEY (`account_id`) REFERENCES `db`.`accounts` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
+CREATE TABLE `db`.`transactions`  (
+  `transactions_id` int NOT NULL,
+  `transactions_token` varchar(255) NOT NULL,
+  `account_id` int NOT NULL,
+  `value` float(255, 2) NULL DEFAULT 0,
+  `description` varchar(255) NULL,
+  `type_transactions` tinyint(1) NULL DEFAULT 0,
+  `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`transactions_id`),
+  INDEX `idx_transactions_type`(`type_transactions`) USING BTREE,
+  INDEX `idx_transactions_account_id`(`account_id`) USING BTREE,
+  UNIQUE INDEX `idx_transactions_transactions_token`(`transactions_token`) USING BTREE,
+  CONSTRAINT `fk_transactions_accounts_id` FOREIGN KEY (`account_id`) REFERENCES `db`.`accounts` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 
 /*create triggers*/
