@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"github.com/orenhapeba1/estudy-api-golang-bank/databases"
+	"github.com/orenhapeba1/estudy-api-golang-bank/server"
+)
 
 func main() {
-	fmt.Println("TESTE")
+	databases.OpenConn()
+	s := server.NewServer()
+	s.Run()
 }
