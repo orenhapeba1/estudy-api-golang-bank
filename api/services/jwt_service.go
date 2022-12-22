@@ -23,9 +23,9 @@ type Claim struct {
 	jwt.StandardClaims
 }
 
-func (s *jwtService) GenerateToken(id uint) (string, error) {
+func (s *jwtService) GenerateToken(id int) (string, error) {
 	claim := &Claim{
-		id,
+		uint(id),
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 12).Unix(),
 			Issuer:    s.issure,

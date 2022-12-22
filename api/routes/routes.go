@@ -12,15 +12,17 @@ func ConfigRoutes(router *gin.Engine) {
 	main := router.Group("api/v1")
 	{
 		main.POST("login", controllers.Login)
+		main.POST("accounts", controllers.AccountInsert)
 
 		accounts := main.Group("accounts", middleware.Auth())
 		{
 			accounts.GET("/", controllers.AccountView)
-
-			/*empresas.PUT("/:id", controllers.EmpresaUpdate)
-			empresas.DELETE("/:id", controllers.EmpresaDelete)*/
+			accounts.PUT("/", controllers.AccountUpdate)
+			accounts.PUT("/:account", controllers.AccountUpdate)
+			accounts.DELETE("/:account", controllers.AccountDelete)
 
 		}
+
 	}
 
 }

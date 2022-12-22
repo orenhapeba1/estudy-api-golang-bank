@@ -26,10 +26,18 @@ type AccountCreate struct {
 	Password string `json:"password"  db:"password"`
 }
 
+type AccountNumber struct {
+	Account_number int `json:"account_number"  db:"account_number"`
+}
+
 type AccountBalance struct {
 	AccountNumber int         `json:"account_number"  db:"account_number"`
 	Balance       float64     `json:"balance"  db:"balance"`
 	Password      null.String `json:"password, omitempty"  db:"password" `
 	CreatedAt     time.Time   `json:"created_at"  db:"created_at"`
 	UpdatedAt     time.Time   `json:"updated_at"  db:"updated_at"`
+}
+
+type AccountMax struct {
+	AccountNumber int `json:"account_number"  db:"account_number"`
 }

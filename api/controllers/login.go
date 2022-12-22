@@ -56,7 +56,7 @@ func Login(c *gin.Context) {
 		msgreturn = "invalid credentials"
 	} else {
 
-		token, err := services.NewJWTService().GenerateToken(uint(p.Account))
+		token, err := services.NewJWTService().GenerateToken((p.Account))
 
 		if err != nil {
 			code = 500
