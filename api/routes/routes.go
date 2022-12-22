@@ -22,7 +22,14 @@ func ConfigRoutes(router *gin.Engine) {
 			accounts.DELETE("/:account", controllers.AccountDelete)
 
 		}
+		balance := main.Group("balance", middleware.Auth())
+		{
+			balance.GET("/", controllers.AccountView)
+			balance.GET("/:account", controllers.AccountView)
+			balance.POST("/:account", controllers.AccountView)
+			balance.POST("/", controllers.AccountView)
 
+		}
 	}
 
 }
