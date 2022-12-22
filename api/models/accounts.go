@@ -31,6 +31,7 @@ type AccountNumber struct {
 }
 
 type AccountBalance struct {
+	AccountId     null.Int    `json:"account_id, omitempty"  db:"account_id"`
 	AccountNumber int         `json:"account_number"  db:"account_number"`
 	Balance       float64     `json:"balance"  db:"balance"`
 	Password      null.String `json:"password, omitempty"  db:"password" `

@@ -8,6 +8,7 @@ require (
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/jmoiron/sqlx v1.3.5
+	github.com/oklog/ulid v1.3.1
 	gopkg.in/guregu/null.v4 v4.0.0
 )
 

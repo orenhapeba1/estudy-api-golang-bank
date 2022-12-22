@@ -23,12 +23,12 @@ CREATE TABLE `db`.`account_balance`  (
 );
 
 CREATE TABLE `db`.`transactions`  (
-  `transactions_id` int NOT NULL,
+  `transactions_id` int NOT NULL AUTO_INCREMENT,
   `transactions_token` varchar(255) NOT NULL,
   `account_id` int NOT NULL,
   `value` float(255, 2) NULL DEFAULT 0,
   `description` varchar(255) NULL,
-  `type_transactions` tinyint(1) NULL DEFAULT 0,
+  `type_transactions` varchar(50) NOT NULL DEFAULT "AWAITING_RISK_ANALYSIS",
   `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`transactions_id`),

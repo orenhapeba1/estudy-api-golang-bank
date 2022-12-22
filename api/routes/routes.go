@@ -24,10 +24,10 @@ func ConfigRoutes(router *gin.Engine) {
 		}
 		balance := main.Group("balance", middleware.Auth())
 		{
-			balance.GET("/", controllers.AccountView)
-			balance.GET("/:account", controllers.AccountView)
-			balance.POST("/:account", controllers.AccountView)
-			balance.POST("/", controllers.AccountView)
+			balance.GET("/", controllers.BalanceView)
+			balance.GET("/:account", controllers.BalanceView)
+			balance.POST("/", controllers.BalanceInsert)
+			balance.POST("/:account", controllers.BalanceInsert)
 
 		}
 	}
