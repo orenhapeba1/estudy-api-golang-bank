@@ -54,3 +54,17 @@ func (s *jwtService) ValidateToken(token string) bool {
 
 	return err == nil
 }
+
+func TokenBearer(header string) string {
+	const Bearer_schema = "Bearer "
+
+	if header == "" {
+		fmt.Println("sem token")
+	}
+
+	token := header[len(Bearer_schema):]
+
+	//fmt.Println("\nBearer: ", token)
+
+	return token
+}
