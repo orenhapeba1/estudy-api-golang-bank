@@ -11,7 +11,6 @@ func ConfigRoutes(router *gin.Engine) {
 	main := router.Group("api/v1")
 	{
 		main.POST("login", controllers.Login)
-		main.GET("/", controllers.Login)
 	}
 
 }

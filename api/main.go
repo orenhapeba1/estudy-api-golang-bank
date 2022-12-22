@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+
+	//fmt.Printf(services.SHA256Encoder("4501bgui"))
+
 	databases.OpenConn()
 	s := server.NewServer()
 	s.Run()

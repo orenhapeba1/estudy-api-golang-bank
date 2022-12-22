@@ -2,8 +2,8 @@
 
 CREATE TABLE `db`.`accounts`  (
     `account_id` int NOT NULL AUTO_INCREMENT,
-    `account_number` int(10) NULL,
-    `password` int(4) NULL,
+    `account_number` int(10) NOT NULL,
+    `password` varchar(255) NOT NULL,
     `token` varchar(255) NULL,
     `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
