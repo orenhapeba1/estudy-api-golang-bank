@@ -1,6 +1,6 @@
 # API RESTFull BANK - GOLANG
 
-Teste de desenvolvendo API RESTFull utilizando Framework Gin na linguagem GO.
+Teste de desenvolvimento API RESTFull utilizando Framework Gin na linguagem GO.
 
 
 ## Tecnologias Utilizadas
