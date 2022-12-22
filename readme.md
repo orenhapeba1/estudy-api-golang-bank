@@ -40,7 +40,7 @@ docker-compose up -d
 precisamos alterar as permissões do MySQL para poder subir a base de dados
 ```bash
 
-docker exec -it mysql mysql -uroot -pdocker
+docker exec -it mysql mysql -uroot -proot
 
 ```
 depois de efetuar login no mysql executar o comando abaixo para alterar a permissao de acesso do root
