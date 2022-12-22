@@ -1,6 +1,21 @@
 version: "3"
 services:
+  web:
+    image: golang:1.18
+    working_dir: /api
+    volumes:
+      - ./api:/api
+    environment:
+      - PORT=5000
+    ports:
+      - "5000:5000"
+    links:
+      - mysql
+    networks:
+      sail:
+    command: go run main.go
   mysql:
+    container_name: mysql
     image: "mysql/mysql-server:8.0"
     restart: always
     ports:
@@ -17,7 +32,7 @@ services:
       - "sail-mysql:/etc/mysql/conf.d"
       - "./db:/root/db"
     networks:
-      - sail
+      sail:
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
       retries: 3
@@ -30,4 +45,6 @@ networks:
     driver: bridge
 volumes:
   sail-mysql:
+    driver: local
+  sail-web:
     driver: local

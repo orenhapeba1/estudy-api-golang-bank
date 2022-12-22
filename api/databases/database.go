@@ -17,7 +17,7 @@ var Db *sqlx.DB
 func OpenConn() {
 	fmt.Println("\nConectando ao MySQL...")
 	//dbctx := context.Background()
-	db, err := sqlx.Connect("mysql", "root:docker@tcp(127.0.0.1:3306)/db?parseTime=true")
+	db, err := sqlx.Connect("mysql", "root:docker@tcp(mysql:3306)/db?parseTime=true")
 	if err != nil {
 		panic(err)
 	}
