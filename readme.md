@@ -46,7 +46,6 @@ docker exec -it mysql mysql -uroot -proot
 depois de efetuar login no mysql executar o comando abaixo para alterar a permissao de acesso do root
 ```bash
 
-RENAME USER `root`@`localhost` TO `root`@`%`;
 USE db;
 source /root/db/db.sql;
 
